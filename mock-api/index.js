@@ -1,12 +1,16 @@
-var express  = require('express');
+var express = require('express');
 var app = express();
 
-var jsonTest = {
-  "hello": "World"
-};
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
-app.get('/test', function (req, res) {
-  res.send(jsonTest);
+var contests = require('./contests-mock.js');
+
+app.get('/contests', function (req, res) {
+  res.send(contests);
 });
 
 app.listen(3001, function () {

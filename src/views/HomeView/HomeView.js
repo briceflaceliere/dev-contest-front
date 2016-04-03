@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { increment, doubleAsync } from '../../redux/modules/counter'
 import DuckImage from './Duck.jpg'
 import classes from './HomeView.scss'
+import { Link } from 'react-router'
 
 // We can use Flow (http://flowtype.org/) to type our component's props
 // and state. For convenience we've included both regular propTypes and
@@ -38,7 +39,9 @@ export class HomeView extends React.Component<void, Props, void> {
               alt='This is a duck, because Redux.' />
           </div>
         </div>
-        <h1>Welcome to the React Redux Starter Kit</h1>
+        <h1>A VIRER PROCHAINEMENT</h1>
+        <p>Mais pour l'instant ça me sert d'exemple</p>
+        <Link to="/contests">Voir les concours</Link>
         <h2>
           Sample Counter:
           {' '}
