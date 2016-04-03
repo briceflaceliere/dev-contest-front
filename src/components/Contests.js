@@ -1,13 +1,16 @@
-import React, { PropTypes, Component } from 'react'
+import React, {PropTypes, Component} from 'react';
+import ContestShort from './ContestShort';
 
 export default class Contests extends Component {
+
+
   render() {
     return (
-      <ul>
+      <div>
         {this.props.contests.items.map((contest, i) =>
-          <li key={i}>{contest._id}</li>
+          <ContestShort contest={contest} key={contest._id}/>
         )}
-      </ul>
+      </div>
     )
   }
 }

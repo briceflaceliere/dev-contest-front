@@ -18,36 +18,17 @@ class ContestsView extends Component {
     dispatch(fetchContestsIfNeeded());
   }
 
-  handleRefreshClick(e) {
-    e.preventDefault();
-
-    const {dispatch} = this.props;
-    dispatch(fetchContestsIfNeeded());
-  }
 
   render() {
     const {contests, isFetching, lastUpdated} = this.props;
     return (
-      <div>
-        <p>
-          {lastUpdated &&
-          <span>
-              Last updated at {new Date(lastUpdated).toLocaleTimeString()}.
-            {' '}
-            </span>
-          }
-          {!isFetching &&
-          <a href='#'
-             onClick={this.handleRefreshClick}>
-            Refresh
-          </a>
-          }
-        </p>
-        {isFetching && contests.length === 0 &&
-        <h2>Loading...</h2>
+      <div className="ContestsView">
+
+        {isFetching && contests.items.length === 0 &&
+        <h2>Chargement...</h2>
         }
-        {!isFetching && contests.length === 0 &&
-        <h2>Empty.</h2>
+        {!isFetching && contests.items.length === 0 &&
+        <h2>Pas de concours.</h2>
         }
         {contests.items.length > 0 &&
         <div style={{ opacity: isFetching ? 0.5 : 1 }}>
