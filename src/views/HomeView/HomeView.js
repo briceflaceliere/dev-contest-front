@@ -1,10 +1,10 @@
 /* @flow */
-import React, { PropTypes } from 'react'
-import { connect } from 'react-redux'
-import { increment, doubleAsync } from '../../redux/modules/counter'
+import React, {PropTypes} from 'react'
+import {connect} from 'react-redux'
+import {increment, doubleAsync} from '../../redux/modules/counter'
 import DuckImage from './Duck.jpg'
 import classes from './HomeView.scss'
-import { Link } from 'react-router'
+import {Link} from 'react-router'
 
 // We can use Flow (http://flowtype.org/) to type our component's props
 // and state. For convenience we've included both regular propTypes and
@@ -13,7 +13,8 @@ import { Link } from 'react-router'
 // NOTE: You can run `npm run flow:check` to check for any errors in your
 // code, or `npm i -g flow-bin` to have access to the binary globally.
 // Sorry Windows users :(.
-type Props = {
+type
+Props = {
   counter: number,
   doubleAsync: Function,
   increment: Function
@@ -29,19 +30,16 @@ export class HomeView extends React.Component<void, Props, void> {
     increment: PropTypes.func.isRequired
   };
 
-  render () {
+  render() {
     return (
-      <div className='container text-center'>
-        <div className='row'>
-          <div className='col-xs-2 col-xs-offset-5'>
-            <img className={classes.duck}
-              src={DuckImage}
-              alt='This is a duck, because Redux.' />
-          </div>
-        </div>
+      <div className='container text-center testView'>
+
         <h1>A VIRER PROCHAINEMENT</h1>
         <p>Mais pour l'instant ça me sert d'exemple</p>
-        <Link to="/contests">Voir les concours</Link>
+        <ul>
+          <li><Link to="/contests">Voir les concours</Link></li>
+          <li><Link to="/sandbox">Sandbox</Link></li>
+        </ul>
         <h2>
           Sample Counter:
           {' '}
@@ -61,7 +59,7 @@ export class HomeView extends React.Component<void, Props, void> {
 
 const mapStateToProps = (state) => ({
   counter: state.counter
-})
+});
 export default connect((mapStateToProps), {
   increment: () => increment(1),
   doubleAsync
